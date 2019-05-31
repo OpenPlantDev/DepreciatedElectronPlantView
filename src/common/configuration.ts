@@ -32,15 +32,15 @@ export default function setupEnv() {
     // of running this sample on localhost, ensure your registration includes http://localhost:3000/signin-callback as a
     // valid redirect URI.
     // -----------------------------------------------------------------------------------------------------------
-    imjs_browser_test_client_id: "imodeljs-spa-test-2686",
+    imjs_browser_test_client_id: "spa-fyHwH9YXCwbcM3a6UufHbavvW",
     // Set this to the registered clientId
     // Note: "imodeljs-spa-test-2686" is setup to work with the (default) localhost redirect URI below
 
     imjs_browser_test_redirect_uri : "http://localhost:3000/signin-callback",
     // Set this to be the registered redirect URI
     // Note: "http://localhost:3000/signin-callback" is setup to work with the (default) clientId above
-
-    imjs_browser_test_scope: "openid email profile organization imodelhub context-registry-service",
+    imjs_buddi_resolve_url_using_region: "102",
+    imjs_browser_test_scope: "openid email profile organization imodelhub context-registry-service reality-data:read imodeljs-router visible-api-scope",
     // Set this to be the scopes of services the application needs to access
     // Note: The default value set above ensures the minimal working of the application
   });
