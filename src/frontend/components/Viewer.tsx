@@ -27,8 +27,11 @@ export default class SimpleViewerComponent extends React.PureComponent<Props> {
   public render() {
     return (
       <>
-        <Button title="Select Viewer Type" id="Select Viewer Type" /*onClick={this._iModelSelection()}*/>Select Viewer Type</Button>
+      <Button title="Select New Viewer" id="Select New Viewer" /*onClick={this._iModelSelection()}*/>Select New Viewer</Button>
       </>
     );
+  }
+  public onClick() {
+
   }
 }
