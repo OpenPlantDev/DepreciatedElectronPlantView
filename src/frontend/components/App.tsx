@@ -169,6 +169,9 @@ export default class App extends React.Component<{}, AppState> {
         await imodel.close();
       }
       this.setState({ imodel: undefined, viewDefinitionId: undefined });
+      console.log("Its here");
+      console.log(e);
+      console.log(e.message);
       alert(e.message);
     }
   }
@@ -200,7 +203,7 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <div className="app">
         <div className="app-header">
-          <h2>{IModelApp.i18n.translate("Welcome to WestWorld")}</h2>
+          <h2>{IModelApp.i18n.translate("Welcome to OpenPlant Viewer")}</h2>
         </div>
         {ui}
       </div>
@@ -264,6 +267,8 @@ class OpenIModelButton extends React.PureComponent<OpenIModelButtonProps, OpenIM
         imodel = await IModelConnection.open(info.projectId, info.imodelId, OpenMode.Readonly);
       }
     } catch (e) {
+      console.log(e);
+      console.log(e.message);
       alert(e.message);
     }
     await this.onIModelSelected(imodel);

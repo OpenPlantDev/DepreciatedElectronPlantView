@@ -40,7 +40,7 @@ export default function setupEnv() {
     // Set this to be the registered redirect URI
     // Note: "http://localhost:3000/signin-callback" is setup to work with the (default) clientId above
     imjs_buddi_resolve_url_using_region: "102",
-    imjs_browser_test_scope: "openid email profile organization imodelhub context-registry-service reality-data:read imodeljs-router visible-api-scope",
+    imjs_browser_test_scope: "openid email profile organization imodelhub context-registry-service imodeljs-router visible-api-scope",
     // Set this to be the scopes of services the application needs to access
     // Note: The default value set above ensures the minimal working of the application
   });
