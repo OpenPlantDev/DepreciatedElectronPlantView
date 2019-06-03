@@ -203,7 +203,7 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <div className="app">
         <div className="app-header">
-          <h2>{IModelApp.i18n.translate("Welcome to OpenPlant Viewer")}</h2>
+          <h2>{"OpenPlant Viewer"}</h2>
         </div>
         {ui}
       </div>
@@ -221,6 +221,7 @@ interface OpenIModelButtonProps {
 interface OpenIModelButtonState {
   isLoading: boolean;
 }
+
 /** Renders a button that opens an iModel identified in configuration */
 class OpenIModelButton extends React.PureComponent<OpenIModelButtonProps, OpenIModelButtonState> {
   public state = { isLoading: false };
@@ -303,7 +304,7 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
         <div className="right">
           <div className="top">
             <TreeWidget imodel={this.props.imodel} rulesetId={rulesetId} />
-            {/* <Button title="Navigation" id="New iModel" onClick="">Select New iModel</Button> */}
+            {<Button title="Navigation" id="New iModel" onClick={this._iModelSelection()}>Select New iModel</Button>}
           </div>
           <div className="bottom">
             <PropertiesWidget imodel={this.props.imodel} rulesetId={rulesetId} />
