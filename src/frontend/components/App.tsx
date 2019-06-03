@@ -124,7 +124,7 @@ export default class App extends React.Component<{}, AppState> {
       console.log(e);
       console.log("Viewing specs");
       console.log(viewSpecs);
-      console.log("Erorr no views returned from query");
+      console.log("Error no views returned from query");
     }
     const acceptedViewClasses = [
       "BisCore:SpatialViewDefinition",
