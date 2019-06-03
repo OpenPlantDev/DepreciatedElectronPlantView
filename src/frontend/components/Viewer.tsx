@@ -4,6 +4,7 @@
 *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { IModelConnection } from "@bentley/imodeljs-frontend";
+import { Id64String } from "@bentley/bentleyjs-core";
 import { Button } from "@bentley/ui-core";
 
 /** React properties for the viewer component, that accepts an iModel connection with ruleset id */
@@ -11,7 +12,7 @@ export interface IModelConnectionProps {
   /** iModel whose contents should be displayed in the viewer */
   imodel: IModelConnection;
   /** ID of the presentation rule set to use for creating the hierarchy in the viewer */
-  rulesetId: string;
+  viewDefinitionId: Id64String;
 }
 
 /** React properties for the viewer component, that accepts a data provider */
