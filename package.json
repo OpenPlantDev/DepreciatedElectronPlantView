@@ -59,9 +59,9 @@
   "dependencies": {
     "@bentley/bentleyjs-core": "0.191.0",
     "@bentley/config-loader": "0.191.0",
-    "@bentley/geometry-core": "0.191.0",
     "@bentley/electron-manager": "0.191.0",
     "@bentley/express-server": "0.191.0",
+    "@bentley/geometry-core": "0.191.0",
     "@bentley/icons-generic-webfont": "^0.0.9",
     "@bentley/imodeljs-backend": "0.191.0",
     "@bentley/imodeljs-clients": "0.191.0",
@@ -89,7 +89,8 @@
     "react-dnd-html5-backend": "^5.0.1",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "requirejs": "^2.3.6"
   },
   "devDependencies": {
     "@bentley/build-tools": "0.191.0",
@@ -126,7 +127,10 @@
     "typescript": "^3.2.2",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.0",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "commonjs": "latest",
+    "requirejs": "latest",
+    "browserify": "latest"
   },
   "homepage": "http://localhost:3000/",
   "proxy": "http://localhost:5000"

@@ -17,6 +17,8 @@ import TreeWidget from "./Tree";
 import ViewportContentControl from "./Viewport";
 import "@bentley/icons-generic-webfont/dist/bentley-icons-generic-webfont.css";
 import "./App.css";
+import electron = require("electron");
+//add another / to make a triple reference directive <reference path="electron" name="foo"/>
 
 // tslint:disable: no-console
 // cSpell:ignore imodels
@@ -53,7 +55,7 @@ export default class App extends React.Component<{}, AppState> {
     // subscribe for unified selection changes
     Presentation.selection.selectionChange.addListener(this._onSelectionChanged);
 
-    // Initialize authorization state, and add listener to changes
+    //authorization state, and add listener to changes
     SimpleViewerApp.oidcClient.onUserStateChanged.addListener(this._onUserStateChanged);
     if (SimpleViewerApp.oidcClient.isAuthorized) {
       SimpleViewerApp.oidcClient.getAccessToken(new FrontendRequestContext()) // tslint:disable-line: no-floating-promises
@@ -292,6 +294,7 @@ interface IModelComponentsProps {
 }
 /** Renders a viewport, a tree, a property grid and a table */
 class IModelComponents extends React.PureComponent<IModelComponentsProps> {
+
   public render() {
     // ID of the presentation ruleset used by all of the controls; the ruleset
     // can be found at `assets/presentation_rules/Default.PresentationRuleSet.xml`
@@ -304,7 +307,7 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
         <div className="right">
           <div className="top">
             <TreeWidget imodel={this.props.imodel} rulesetId={rulesetId} />
-          <Button title="Navigation" id="New iModel" /*onClick={this._iModelSelection()}*/>Select New iModel</Button>
+          <Button title="Navigation" id="New iModel" onClick={() => this.newWindow()}>Select New iModel</Button>
           </div>
           <div className="bottom">
             <PropertiesWidget imodel={this.props.imodel} rulesetId={rulesetId} />
@@ -315,5 +318,23 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
         </div>
       </div>
     );
+  }
+
+  public newWindow() {
+    const window = electron.BrowserWindow;
+    const win = new window({
+      width: 800,
+      height: 600,
+      center: true,
+      frame: true,
+      transparent: false,
+      movable: true,
+        webPreferences: {
+        nodeIntegration: true,
+        },
+    });
+    win.loadURL("https://qa-connect-webportal.bentley.com/SelectProject/Index");
+    win.on("close", function () { win.close() })
+    win.show();
   }
 }

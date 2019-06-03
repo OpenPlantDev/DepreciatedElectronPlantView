@@ -5,7 +5,7 @@
 2. Display only relevant documents.
 3. Automatically update on changes.
 4. Formatting/updating viewer relative to model that is chosen. -Zach
-5.
+5. Convert backend to be entirely electron/desktop based
 
 ## Git instructions
 
