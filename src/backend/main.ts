@@ -3,7 +3,7 @@
 * Licensed under the MIT License. See LICENSE.md in the project root for license terms.
 *--------------------------------------------------------------------------------------------*/
 import * as path from "path";
-import { app as electron } from "electron";
+import * as electron from "electron";
 import { Logger } from "@bentley/bentleyjs-core";
 import { IModelHost } from "@bentley/imodeljs-backend";
 import { Presentation } from "@bentley/presentation-backend";
@@ -33,9 +33,12 @@ Presentation.initialize({
   let init: (rpcs: RpcInterfaceDefinition[]) => void;
   if (electron) {
     init = (await import("./electron/main")).default;
+    console.log("BACKEND ELECTRON **************");
   } else if (MobileRpcConfiguration.isMobileBackend) {
     init = (await import("./mobile/main")).default;
+    console.log("BACKEND Mobile **************");
   } else {
+    console.log("BACKEND WEB **************");
     init = (await import("./web/BackendServer")).default;
   }
   // get RPCs supported by this backend

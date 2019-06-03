@@ -81,6 +81,7 @@
     "body-parser": "^1.18",
     "bunyan": "^1.8.12",
     "chai-jest-snapshot": "^2.0.0",
+    "cssify": "^1.0.3",
     "express": "^4",
     "inspire-tree": "^5.0.1",
     "lodash": "^4.17.10",
@@ -90,7 +91,8 @@
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "requirejs": "^2.3.6"
+    "requirejs": "^2.3.6",
+    "sassify": "^4.0.1"
   },
   "devDependencies": {
     "@bentley/build-tools": "0.191.0",
@@ -104,9 +106,11 @@
     "@types/puppeteer": "^1.10.0",
     "@types/react": "^16.4.14",
     "@types/react-dom": "16.0.7",
+    "browserify": "latest",
     "chai": "^4.2.0",
     "chromedriver": "^2.34.1",
-    "electron": "^4.0.1",
+    "commonjs": "latest",
+    "electron": "^4.2.3",
     "electron-chromedriver": "^3.0.0",
     "env-cmd": "^8.0.2",
     "ignore-styles": "^5.0.1",
@@ -117,6 +121,7 @@
     "npm-run-all": "^4.1.3",
     "puppeteer": "^1.10.0",
     "react-testing-library": "^5.3.2",
+    "requirejs": "latest",
     "rimraf": "^2.6.2",
     "sinon": "^7.2.0",
     "spectron": "^5.0.0",
@@ -127,10 +132,7 @@
     "typescript": "^3.2.2",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.0",
-    "xmlhttprequest": "^1.8.0",
-    "commonjs": "latest",
-    "requirejs": "latest",
-    "browserify": "latest"
+    "xmlhttprequest": "^1.8.0"
   },
   "homepage": "http://localhost:3000/",
   "proxy": "http://localhost:5000"

@@ -18,7 +18,7 @@ import ViewerWidget from "./Viewer";
 import ViewportContentControl from "./Viewport";
 import "@bentley/icons-generic-webfont/dist/bentley-icons-generic-webfont.css";
 import "./App.css";
-import electron = require("electron");
+// import electron = require("electron");
 //add another / to make a triple reference directive <reference path="electron" name="foo"/>
 
 // tslint:disable: no-console
@@ -323,7 +323,7 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
   }
 
   public newWindow() {
-    const window = electron.BrowserWindow;
+    const window = Electron.BrowserWindow;
     const win = new window({
       width: 800,
       height: 600,
