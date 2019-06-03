@@ -1,19 +1,18 @@
-#In Development PlantView application
+# In Development PlantView application
 
-##Current TODO
+## Current TODO
 1. Manually pick which project to view -Nick
->>>>>>> Stashed changes
 2. Display only relevant documents.
 3. Automatically update on changes.
 4. Formatting/updating viewer relative to model that is chosen. -Zach
 5.
 
-##Git instructions
+## Git instructions
 
-###To Clone:
+### To Clone:
    - type into any command line, in the directory you want to project to be git clone "urltoproject"
 
-###To push changes
+### To push changes
 
    - cd into your local copy of project
    - type git add .
@@ -26,12 +25,12 @@
 
   If you would like to check the files you are about to commit, before you commit type git status.
 
-###To pull changes
+### To pull changes
 
   - cd into your local copy of project
   - type git pull
 
-###Important
+### Important
 Don't remove node_modules from your .gitignore file. This is the file listing everything git will ignore
 when looking for changes. This is because this file is very big, and everyone should have the same one, so its not necessary to upload it.
 You can add files to the gitignore simply by editting it manually, I'm not sure there's a command for that. If you want to remove files in your gitignore from your repository, you may type git clean.
