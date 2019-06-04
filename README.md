@@ -2,10 +2,11 @@
 
 ## Current TODO
 1. Manually pick which project to view -Nick
-2. Display only relevant documents.
+2. Display only relevant documents in tree. -Zach
 3. Automatically update on changes.
-4. Formatting/updating viewer relative to model that is chosen. -Zach
-5. Convert backend to be entirely electron/desktop based
+4. Formatting/updating viewer relative to model that is chosen.
+5. Convert backend to be entirely electron/desktop based.
+6. Be able to edit properties in the viewer.
 ## Git instructions
 
 ### To Clone:

@@ -14,11 +14,10 @@ import { SimpleViewerApp } from "../api/SimpleViewerApp";
 import PropertiesWidget from "./Properties";
 import GridWidget from "./Table";
 import TreeWidget from "./Tree";
-import ViewerWidget from "./Viewer";
 import ViewportContentControl from "./Viewport";
 import "@bentley/icons-generic-webfont/dist/bentley-icons-generic-webfont.css";
 import "./App.css";
-import { BrowserWindow } from "electron";
+//import { BrowserWindow } from "electron";
 //add another / to make a triple reference directive <reference path="electron" name="foo"/>
 
 // tslint:disable: no-console
@@ -308,9 +307,7 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
         <div className="right">
           <div className="top">
             <TreeWidget imodel={this.props.imodel} rulesetId={rulesetId} />
-          <Button title="Navigation" id="New iModel" onClick={() => this.newWindow()}>Select New iModel</Button>
-         /**
-            <ViewerWidget imodel={this.props.imodel} viewDefinitionId={this.props.viewDefinitionId} /> */
+            {/* <Button title="Navigation" id="New iModel" onClick={() => this.newWindow()}>Select New iModel</Button> */}
           </div>
           <div className="bottom">
             <PropertiesWidget imodel={this.props.imodel} rulesetId={rulesetId} />
@@ -323,21 +320,21 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
     );
   }
 
-  public newWindow() {
+  // public newWindow() {
 
-    const win = new BrowserWindow({
-      width: 800,
-      height: 600,
-      center: true,
-      frame: true,
-      transparent: false,
-      movable: true,
-        webPreferences: {
-        nodeIntegration: true,
-        },
-    });
-    win.loadURL("https://qa-connect-webportal.bentley.com/SelectProject/Index");
-    win.on("close", function () { win.close() })
-    win.show();
-  }
+  //   const win = new BrowserWindow({
+  //     width: 800,
+  //     height: 600,
+  //     center: true,
+  //     frame: true,
+  //     transparent: false,
+  //     movable: true,
+  //       webPreferences: {
+  //       nodeIntegration: true,
+  //       },
+  //   });
+  //   win.loadURL("https://qa-connect-webportal.bentley.com/SelectProject/Index");
+  //   win.on("close", function () { win.close() })
+  //   win.show();
+  // }
 }
