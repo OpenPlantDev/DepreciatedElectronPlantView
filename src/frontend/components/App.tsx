@@ -18,7 +18,7 @@ import ViewerWidget from "./Viewer";
 import ViewportContentControl from "./Viewport";
 import "@bentley/icons-generic-webfont/dist/bentley-icons-generic-webfont.css";
 import "./App.css";
-import { BrowserWindow } from "electron";
+//import {BrowserWindow} from "electron";
 //add another / to make a triple reference directive <reference path="electron" name="foo"/>
 
 // tslint:disable: no-console
@@ -50,6 +50,7 @@ export default class App extends React.Component<{}, AppState> {
       },
       offlineIModel: false,
     };
+    console.log("working");
   }
 
   public componentDidMount() {
@@ -110,6 +111,7 @@ export default class App extends React.Component<{}, AppState> {
   }
 
   private _onStartSignin = async () => {
+    console.log("In the _onStartSignin method");
     this.setState((prev) => ({ user: { ...prev.user, isLoading: true } }));
     await SimpleViewerApp.oidcClient.signIn(new FrontendRequestContext());
   }
@@ -172,7 +174,7 @@ export default class App extends React.Component<{}, AppState> {
         await imodel.close();
       }
       this.setState({ imodel: undefined, viewDefinitionId: undefined });
-      console.log("Its here");
+      console.log("Loading view definition error");
       console.log(e);
       console.log(e.message);
       alert(e.message);
@@ -181,6 +183,7 @@ export default class App extends React.Component<{}, AppState> {
 
   private get _signInRedirectUri() {
     const split = (Config.App.get("imjs_browser_test_redirect_uri") as string).split("://");
+    console.log("redirecting after signin");
     return split[split.length - 1];
   }
 
@@ -191,11 +194,14 @@ export default class App extends React.Component<{}, AppState> {
     if (this.state.user.isLoading || window.location.href.includes(this._signInRedirectUri)) {
       // if user is currently being loaded, just tell that
       ui = `${IModelApp.i18n.translate("SimpleViewer:signing-in")}...`;
+      console.log("Signing in");
     } else if (!this.state.user.accessToken && !this.state.offlineIModel) {
       // if user doesn't have and access token, show sign in page
+      console.log("In login screen");
       ui = (<SignIn onSignIn={this._onStartSignin} onOffline={this._onOffline} />);
     } else if (!this.state.imodel || !this.state.viewDefinitionId) {
       // if we don't have an imodel / view definition id - render a button that initiates imodel open
+      console.log("Missing view definition id");
       ui = (<OpenIModelButton accessToken={this.state.user.accessToken} offlineIModel={this.state.offlineIModel} onIModelSelected={this._onIModelSelected} />);
     } else {
       // if we do have an imodel and view definition id - render imodel components
@@ -308,9 +314,9 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
         <div className="right">
           <div className="top">
             <TreeWidget imodel={this.props.imodel} rulesetId={rulesetId} />
-          <Button title="Navigation" id="New iModel" onClick={() => this.newWindow()}>Select New iModel</Button>
-         /**
-            <ViewerWidget imodel={this.props.imodel} viewDefinitionId={this.props.viewDefinitionId} /> */
+          <Button title="Navigation" id="New iModel" /*onClick={() => this.newWindow()}*/>Select New iModel</Button>
+
+            <ViewerWidget imodel={this.props.imodel} viewDefinitionId={this.props.viewDefinitionId} />
           </div>
           <div className="bottom">
             <PropertiesWidget imodel={this.props.imodel} rulesetId={rulesetId} />
@@ -323,21 +329,22 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
     );
   }
 
-  public newWindow() {
+  // public newWindow() {
 
-    const win = new BrowserWindow({
-      width: 800,
-      height: 600,
-      center: true,
-      frame: true,
-      transparent: false,
-      movable: true,
-        webPreferences: {
-        nodeIntegration: true,
-        },
-    });
-    win.loadURL("https://qa-connect-webportal.bentley.com/SelectProject/Index");
-    win.on("close", function () { win.close() })
-    win.show();
-  }
+  //   const win = new BrowserWindow({
+  //     width: 800,
+  //     height: 600,
+  //     center: true,
+  //     frame: true,
+  //     transparent: false,
+  //     movable: true,
+  //       webPreferences: {
+  //       nodeIntegration: true,
+  //       // preload: __dirname + "./preload.js",
+  //       },
+  //   });
+  //   win.loadURL("https://qa-connect-webportal.bentley.com/SelectProject/Index");
+  //   win.on("close", function () { win.close() })
+  //   win.show();
+  // }
 }

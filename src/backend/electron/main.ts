@@ -44,6 +44,11 @@ export default function initialize(rpcs: RpcInterfaceDefinition[]) {
     mainWindow = new BrowserWindow({
       autoHideMenuBar: true,
       icon: iconPath,
+      webPreferences: {
+        devTools: true,
+        nodeIntegration: false,
+        allowRunningInsecureContent: true,
+      },
     });
     mainWindow.on("closed", () => mainWindow = undefined);
 
@@ -51,6 +56,7 @@ export default function initialize(rpcs: RpcInterfaceDefinition[]) {
     //    in development builds, the frontend assets are served by the webpack devserver
     //    in production builds, load the built frontend assets directly from the filesystem
     mainWindow.loadURL(isDevBuild ? "http://localhost:3000" : parseElectronUrl("electron://index.html"));
+    mainWindow.webContents.openDevTools();
   }
 
   // open the "frontend" window when the application starts up
