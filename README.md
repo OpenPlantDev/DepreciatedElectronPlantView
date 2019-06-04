@@ -1,7 +1,7 @@
 # In Development PlantView application
 
 ## Current TODO
-1. Manually pick which project to view -Nick  ##### In Progress, dependant on 5
+1. Manually pick which project to view -Nick In Progress, dependant on 5
 2. Display only relevant documents in tree. -Zach
 3. Automatically update on changes.
 4. Formatting/updating viewer relative to model that is chosen.
