@@ -14,7 +14,6 @@ import { SimpleViewerApp } from "../api/SimpleViewerApp";
 import PropertiesWidget from "./Properties";
 import GridWidget from "./Table";
 import TreeWidget from "./Tree";
-import ViewerWidget from "./Viewer";
 import ViewportContentControl from "./Viewport";
 import "@bentley/icons-generic-webfont/dist/bentley-icons-generic-webfont.css";
 import "./App.css";
@@ -315,8 +314,6 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
           <div className="top">
             <TreeWidget imodel={this.props.imodel} rulesetId={rulesetId} />
           <Button title="Navigation" id="New iModel" /*onClick={() => this.newWindow()}*/>Select New iModel</Button>
-
-            <ViewerWidget imodel={this.props.imodel} viewDefinitionId={this.props.viewDefinitionId} />
           </div>
           <div className="bottom">
             <PropertiesWidget imodel={this.props.imodel} rulesetId={rulesetId} />
@@ -340,7 +337,6 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
   //     movable: true,
   //       webPreferences: {
   //       nodeIntegration: true,
-  //       // preload: __dirname + "./preload.js",
   //       },
   //   });
   //   win.loadURL("https://qa-connect-webportal.bentley.com/SelectProject/Index");
