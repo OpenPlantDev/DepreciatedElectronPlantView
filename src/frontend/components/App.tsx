@@ -18,7 +18,7 @@ import ViewerWidget from "./Viewer";
 import ViewportContentControl from "./Viewport";
 import "@bentley/icons-generic-webfont/dist/bentley-icons-generic-webfont.css";
 import "./App.css";
-// import electron = require("electron");
+import { BrowserWindow } from "electron";
 //add another / to make a triple reference directive <reference path="electron" name="foo"/>
 
 // tslint:disable: no-console
@@ -309,7 +309,8 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
           <div className="top">
             <TreeWidget imodel={this.props.imodel} rulesetId={rulesetId} />
           <Button title="Navigation" id="New iModel" onClick={() => this.newWindow()}>Select New iModel</Button>
-            <ViewerWidget imodel={this.props.imodel} viewDefinitionId={this.props.viewDefinitionId} />
+         /**
+            <ViewerWidget imodel={this.props.imodel} viewDefinitionId={this.props.viewDefinitionId} /> */
           </div>
           <div className="bottom">
             <PropertiesWidget imodel={this.props.imodel} rulesetId={rulesetId} />
@@ -323,8 +324,8 @@ class IModelComponents extends React.PureComponent<IModelComponentsProps> {
   }
 
   public newWindow() {
-    const window = Electron.BrowserWindow;
-    const win = new window({
+
+    const win = new BrowserWindow({
       width: 800,
       height: 600,
       center: true,
