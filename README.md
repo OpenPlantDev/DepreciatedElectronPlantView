@@ -1,11 +1,11 @@
 # In Development PlantView application
 
 ## Current TODO
-1. Manually pick which project to view -Nick
+1. Manually pick which project to view -Nick  ##### In Progress, dependant on 5
 2. Display only relevant documents in tree. -Zach
 3. Automatically update on changes.
 4. Formatting/updating viewer relative to model that is chosen.
-5. Convert backend to be entirely electron/desktop based.
+5. Convert backend to be entirely electron/desktop based. - Nick 
 6. Be able to edit properties in the viewer.
 ## Git instructions
 
