@@ -1,18 +1,17 @@
-# In Development PlantView application
+#In Development PlantView application
 
-## Current TODO
+##Current TODO
 1. Manually pick which project to view -Nick
 2. Display only relevant documents.
 3. Automatically update on changes.
 4. Formatting/updating viewer relative to model that is chosen. -Zach
 5. Convert backend to be entirely electron/desktop based
+##Git instructions
 
-## Git instructions
-
-### To Clone:
+###To Clone:
    - type into any command line, in the directory you want to project to be git clone "urltoproject"
 
-### To push changes
+###To push changes
 
    - cd into your local copy of project
    - type git add .
