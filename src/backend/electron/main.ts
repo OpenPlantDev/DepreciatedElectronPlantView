@@ -4,7 +4,7 @@
 *--------------------------------------------------------------------------------------------*/
 import * as path from "path";
 //import preload from "preload/index";
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, BrowserWindow, BrowserView } from "electron";
 import { RpcInterfaceDefinition, ElectronRpcManager } from "@bentley/imodeljs-common";
 
 
@@ -18,7 +18,7 @@ export default function initialize(rpcs: RpcInterfaceDefinition[]) {
   // the application needs to continue running even if the "main" window closes
   // so we'll keep a reference to the currently open "main" window here
   let mainWindow: BrowserWindow | undefined;
-  //let embedJQ: BrowserView | undefined;
+  let embedJQ: BrowserView | undefined;
 
   /**
    * Converts an "electron://" URL to an absolute file path.
@@ -74,24 +74,24 @@ export default function initialize(rpcs: RpcInterfaceDefinition[]) {
     //An attempted method to create a new View, not window, will shares some properties with the parent window its attached to
     //This window can preload jQuery on every single frame the main window loads, this was somewhat successful, still redirects to
     //chrome error page
-    // mainWindow.webContents.on("did-start-loading", () => {
-    //   if (mainWindow) {
-    //     console.log("will navigate notification");
-    //     if (mainWindow.webContents.getURL().substring(0, 44) === "https://qa-ims.bentley.com/IMS/Account/Login".substring(0, 44)) {
-    //       console.log("Creating a new window to load JQ");
-    //       embedJQ = new BrowserView({
-    //         // parent: mainWindow,
-    //         // modal: false,
-    //         // show: true,
-    //         webPreferences: {
-    //           preload: "C:/Users/Nick.Wille/PlantView/src/backend/electron/preload.js",
-    //         },
-    //       });
-    //       embedJQ.listeners;
-    //       mainWindow.on("closed", () => embedJQ = undefined);
-    //     }
-    //   }
-    // });
+    mainWindow.webContents.on("did-start-loading", () => {
+      if (mainWindow) {
+        console.log("will navigate notification");
+        if (mainWindow.webContents.getURL().substring(0, 44) === "https://qa-ims.bentley.com/IMS/Account/Login".substring(0, 44)) {
+          console.log("Creating a new window to load JQ");
+          embedJQ = new BrowserView({
+            // parent: mainWindow,
+            // modal: false,
+            // show: true,
+            webPreferences: {
+              preload: "C:/Users/Nick.Wille/PlantView/src/backend/electron/preload.js",
+            },
+          });
+          embedJQ.listeners;
+          mainWindow.on("closed", () => embedJQ = undefined);
+        }
+      }
+    });
     mainWindow.on("closed", () => mainWindow = undefined);
 
     // load the frontend

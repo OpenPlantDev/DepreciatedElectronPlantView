@@ -1,13 +1,13 @@
 /*These methods are the ones I found to have the most support and be the most promising, but I haven't gotten any of them to work */
 //Method #1, preloading a function to inject jquery manually into any browser window loaded, this function gets exported as a preload
-  // const preloadJQ = () => {
-  //   const path = require('path')
-  //   window.addEventListener('load', () => {
-  //     //inject jquery to page
-  //     window.$ = window.jQuery = require(path.join(__dirname, "../../../node_modules/jquery/dist/jquery.js"));
-  //   });
-  // };
-  //  module.exports = preloadJQ;
+  const preloadJQ = () => {
+    const path = require('path')
+    window.addEventListener('load', () => {
+      //inject jquery to page
+      window.$ = window.jQuery = require(path.join(__dirname, "../../../node_modules/jquery/dist/jquery.js"));
+    });
+  };
+   module.exports = preloadJQ;
 //Method #2 manually adjusting global window variables type
   //window.nodeRequire = require;
   //window.$ = window.JQuery = require("C:/Users/Nick.Wille/PlantView/node_modules/jquery/dist/jquery");
