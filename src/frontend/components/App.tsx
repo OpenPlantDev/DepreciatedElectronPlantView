@@ -51,11 +51,10 @@ export default class App extends React.Component<{}, AppState> {
     };
     console.log("working");
   }
-
   public componentDidMount() {
     // subscribe for unified selection changes
     Presentation.selection.selectionChange.addListener(this._onSelectionChanged);
-
+    console.log("component mounted");
     //authorization state, and add listener to changes
     SimpleViewerApp.oidcClient.onUserStateChanged.addListener(this._onUserStateChanged);
     if (SimpleViewerApp.oidcClient.isAuthorized) {
@@ -182,7 +181,8 @@ export default class App extends React.Component<{}, AppState> {
 
   private get _signInRedirectUri() {
     const split = (Config.App.get("imjs_browser_test_redirect_uri") as string).split("://");
-    console.log("redirecting after signin");
+    Config.App.set("imjs_buddi_resolve_url_using_region", "102");
+    console.log("redirecting signin");
     return split[split.length - 1];
   }
 
@@ -193,6 +193,10 @@ export default class App extends React.Component<{}, AppState> {
     if (this.state.user.isLoading || window.location.href.includes(this._signInRedirectUri)) {
       // if user is currently being loaded, just tell that
       ui = `${IModelApp.i18n.translate("SimpleViewer:signing-in")}...`;
+      /*
+        Raman
+        This is the last method call before redirecting the bentley's login. This is the last method call performed before crashing.
+      */
       console.log("Signing in");
     } else if (!this.state.user.accessToken && !this.state.offlineIModel) {
       // if user doesn't have and access token, show sign in page
@@ -204,6 +208,7 @@ export default class App extends React.Component<{}, AppState> {
       ui = (<OpenIModelButton accessToken={this.state.user.accessToken} offlineIModel={this.state.offlineIModel} onIModelSelected={this._onIModelSelected} />);
     } else {
       // if we do have an imodel and view definition id - render imodel components
+       console.log("You have imodel and view def id");
       ui = (<IModelComponents imodel={this.state.imodel} viewDefinitionId={this.state.viewDefinitionId} />);
     }
 

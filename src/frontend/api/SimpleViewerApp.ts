@@ -63,6 +63,7 @@ export class SimpleViewerApp {
   }
 
   private static async initializeOidc() {
+    console.log("In simpleviewerapp initializeoidc");
     const clientId = Config.App.get("imjs_browser_test_client_id");
     const redirectUri = Config.App.getString("imjs_browser_test_redirect_uri"); // must be set in config
     const scope = Config.App.getString("imjs_browser_test_scope");

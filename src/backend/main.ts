@@ -32,6 +32,7 @@ Presentation.initialize({
   // get platform-specific initialization function
   let init: (rpcs: RpcInterfaceDefinition[]) => void;
   if (electron) {
+    console.log("electron");
     init = (await import("./electron/main")).default;
   } else if (MobileRpcConfiguration.isMobileBackend) {
     init = (await import("./mobile/main")).default;
@@ -40,6 +41,7 @@ Presentation.initialize({
   }
   // get RPCs supported by this backend
   const rpcs = getSupportedRpcs();
+  console.log("Supported rpcs : " + rpcs);
   // do initialize
   init(rpcs);
 })();

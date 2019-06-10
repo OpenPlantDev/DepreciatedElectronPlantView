@@ -12,6 +12,7 @@ export class OidcIOSClient extends OidcClient implements IOidcFrontendClient {
   }
 
   public async initialize(): Promise<void> {
+    console.log("In oidclosclient initialize");
     return new Promise<void>((resolve) => {
       (window as any).notifyOidcClient = () => {
         this.reloadInfo();
@@ -22,6 +23,8 @@ export class OidcIOSClient extends OidcClient implements IOidcFrontendClient {
   }
   private reloadInfo() {
     const settings = window.localStorage.getItem("ios:oidc_info");
+    console.log("In oidclosclient reloadInfo");
+    console.log(settings);
     const info = JSON.parse(settings!);
     const startsAt: Date = new Date(info!.expires_at - info!.expires_in);
     const expiresAt: Date = new Date(info!.expires_at);
@@ -32,6 +35,7 @@ export class OidcIOSClient extends OidcClient implements IOidcFrontendClient {
   public async signIn(requestContext: ClientRequestContext): Promise<void> {
     return new Promise((resolve, reject) => {
       try {
+        console.log("In oidclosclient signin");
         this.startSignIn(requestContext);
       } catch (error) {
         reject(error);
@@ -47,6 +51,7 @@ export class OidcIOSClient extends OidcClient implements IOidcFrontendClient {
   }
 
   private startSignIn(_requestContext: ClientRequestContext): void {
+    console.log("In oidclosclient start signin");
     (window as any).webkit.messageHandlers.signIn.postMessage("");
   }
 
@@ -76,6 +81,7 @@ export class OidcIOSClient extends OidcClient implements IOidcFrontendClient {
   }
 
   public async getAccessToken(_requestContext?: ClientRequestContext): Promise<AccessToken> {
+    console.log("In oidclosclient getaccesstoken");
     return new Promise<AccessToken>((resolve, reject) => {
       if (this._accessToken)
         resolve(this._accessToken);
@@ -93,11 +99,13 @@ export class OidcIOSClient extends OidcClient implements IOidcFrontendClient {
 
   /** Set to true if the user has signed in, but the token has expired and requires a refresh */
   public get hasExpired(): boolean {
+    console.log("In oidclosclient hasExpired");
     return !!this._accessToken;
   }
 
   /** Set to true if signed in - the accessToken may be active or may have expired and require a refresh */
   public get hasSignedIn(): boolean {
+    console.log("In oidclosclient hasSignedin" + this.hasSignedIn);
     return !!this._accessToken;
   }
 
